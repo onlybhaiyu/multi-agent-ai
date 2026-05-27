@@ -524,16 +524,77 @@ with col_pipeline:
 # ─────────────────────────────────────────────────────────────────
 # TRIGGER: button press → reset state and rerun into pipeline block
 # ─────────────────────────────────────────────────────────────────
-if run_btn:
-    if not topic.strip():
-        st.warning("⚠️  Please enter a research topic first.")
-    else:
-        st.session_state.results      = {}
-        st.session_state.running      = True
-        st.session_state.done         = False
-        st.session_state.current_step = 0   # reset step pointer
-        st.rerun()
+# ─────────────────────────────────────────────────────────────────
+# TOPIC CLASSIFIER
+# ─────────────────────────────────────────────────────────────────
 
+def classify_topic(topic):
+
+    research_keywords = [
+        "research",
+        "future",
+        "technology",
+        "science",
+        "history",
+        "analysis",
+        "impact",
+        "study",
+        "ai",
+        "artificial intelligence",
+        "quantum",
+        "cybersecurity",
+        "climate",
+        "economics",
+        "engineering",
+        "medicine",
+        "space",
+        "business",
+        "education",
+        "energy",
+    ]
+
+    topic_lower = topic.lower()
+
+    for keyword in research_keywords:
+
+        if keyword in topic_lower:
+            return "RESEARCH"
+
+    return "NON-RESEARCH"
+
+if run_btn:
+
+    if not topic.strip():
+
+        st.warning("⚠️ Please enter a research topic first.")
+
+    else:
+
+        topic_type = classify_topic(topic)
+
+        if topic_type == "NON-RESEARCH":
+
+            st.warning(
+                """
+This system is optimized for research-oriented topics.
+
+Try topics like:
+- Future of AI
+- Quantum Computing
+- Climate Change
+- Cybersecurity
+- Space Exploration
+"""
+            )
+
+        else:
+
+            st.session_state.results      = {}
+            st.session_state.running      = True
+            st.session_state.done         = False
+            st.session_state.current_step = 0
+
+            st.rerun()
 
 # ─────────────────────────────────────────────────────────────────
 # PIPELINE EXECUTION
