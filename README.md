@@ -1,2 +1,20 @@
-# multi-agent-ai
-Multi-Agent AI system built using LangGraph, LangChain, Groq, Tavily, and Streamlit. Features intelligent agent collaboration, web search, URL scraping, real-time research workflows, modular pipeline architecture, and interactive Streamlit UI for AI-powered task automation and response generation.
+# Multi-Agent AI System
+
+A Multi-Agent AI project built using LangGraph, LangChain, Groq, Tavily, and Streamlit.
+
+This application uses multiple AI agents to perform intelligent tasks such as web search, URL scraping, research workflows, and AI-powered response generation through an interactive Streamlit interface.
+
+## Tech Stack
+- Python
+- Streamlit
+- LangGraph
+- LangChain
+- Groq
+- Tavily API
+
+## Features
+- Multi-agent workflow
+- Real-time web search
+- URL scraping
+- Interactive Streamlit UI
+- Modular pipeline architecture
